@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -8,8 +8,44 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	  <PackageReference Include="AutoMapper" Version="12.0.1" />
+	  <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+	  <PackageReference Include="FluentValidation" Version="11.9.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.15" />
+	  <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.25" />
+	  <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.25" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.25" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.25" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.25">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Aplication\CustemersOperations\Commands\CreateCustemer\" />
+    <Folder Include="Aplication\CustemersOperations\Commands\DeleteCustemer\" />
+    <Folder Include="Aplication\CustemersOperations\Commands\UpdateCustemer\" />
+    <Folder Include="Aplication\CustemersOperations\Queries\GetCustemerDetail\" />
+    <Folder Include="Aplication\MovieActorsOperations\Commands\CreateMovieActor\" />
+    <Folder Include="Aplication\MovieActorsOperations\Commands\DeleteMovieActor\" />
+    <Folder Include="Aplication\MovieActorsOperations\Commands\UpdateMovieActor\" />
+    <Folder Include="Aplication\MovieActorsOperations\Queries\GetMovieActorDetail\" />
+    <Folder Include="Aplication\MoviesOperations\Commands\CreateMovie\" />
+    <Folder Include="Aplication\MoviesOperations\Commands\DeleteMovie\" />
+    <Folder Include="Aplication\MoviesOperations\Commands\UpdateMovie\" />
+    <Folder Include="Aplication\MoviesOperations\Queries\GetMovieDetail\" />
+    <Folder Include="Aplication\DirectorsOperations\Commands\CreateDirector\" />
+    <Folder Include="Aplication\DirectorsOperations\Commands\DeleteDirector\" />
+    <Folder Include="Aplication\DirectorsOperations\Commands\UpdateDirector\" />
+    <Folder Include="Aplication\DirectorsOperations\Queries\GetDirectorDetail\" />
+    <Folder Include="Aplication\ActorsOperations\Commands\CreateActor\" />
+    <Folder Include="Aplication\ActorsOperations\Commands\DeleteActor\" />
+    <Folder Include="Aplication\ActorsOperations\Commands\UpdateActor\" />
+    <Folder Include="Aplication\ActorsOperations\Queries\GetActorDetail\" />
   </ItemGroup>
 
 </Project>
