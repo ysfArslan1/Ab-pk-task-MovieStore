@@ -1,36 +1,31 @@
 
+using Ab_pk_task_MovieStore;
+using Ab_pk_task_MovieStore.DBOperations;
+
 namespace Ab_pk_task_MovieStore
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+            var host = CreateHostBuilder(args).Build();
+            // in memory de baslangýc olarak database kontrolu ve veri ekleme için kullanýlýyor
+            using (var scope = host.Services.CreateScope())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                var services = scope.ServiceProvider;
+                DataGenerator.Initialize(services);
             }
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
+            host.Run();
 
 
-            app.MapControllers();
-
-            app.Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    
     }
 }
