@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Ab_pk_task_MovieStore.Aplication.ActorsOperations.Queries.GetActors;
 using Ab_pk_task_MovieStore.DBOperations;
+using Ab_pk_task_MovieStore.Aplication.ActorsOperations.Queries.GetActorDetail;
+using FluentValidation;
+using Ab_pk_task_MovieStore.Aplication.ActorsOperations.Commands.UpdateActor;
 
 namespace Ab_pk_task_MovieStore.Controllers
 {
@@ -30,22 +33,22 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok(_list);
         }
 
-        //// GET: get Actor from id
-        //[HttpGet("{id}")]
-        //public ActionResult<ActorDetailViewModel> GetActorById([FromRoute] int id)
-        //{
-        //    ActorDetailViewModel result;
-           
-        //    // GetActorDetailQuery nesnesi oluşturulur
-        //    GetActorDetailQuery query = new GetActorDetailQuery(_context, _mapper);
-        //    query.Id = id;
-        //    // Validation işlemi yapılır.
-        //    GetActorDetailQueryValidator validator = new GetActorDetailQueryValidator();
-        //    validator.ValidateAndThrow(query);
-        //    result = query.Handle();
-            
-        //    return Ok(result);
-        //}
+        // GET: get Actor from id
+        [HttpGet("{id}")]
+        public ActionResult<ActorDetailViewModel> GetActorById([FromRoute] int id)
+        {
+            ActorDetailViewModel result;
+
+            // GetActorDetailQuery nesnesi oluşturulur
+            GetActorDetailQuery query = new GetActorDetailQuery(_context, _mapper);
+            query.Id = id;
+            // Validation işlemi yapılır.
+            GetActorDetailQueryValidator validator = new GetActorDetailQueryValidator();
+            validator.ValidateAndThrow(query);
+            result = query.Handle();
+
+            return Ok(result);
+        }
 
         //// Post: create a Actor
         //[HttpPost]
@@ -62,21 +65,21 @@ namespace Ab_pk_task_MovieStore.Controllers
         //    return Ok();
         //}
 
-        //// PUT: update a Actor
-        //[HttpPut("{id}")]
-        //public IActionResult UpdateActor(int id, [FromBody] UpdateActorModel updateActor)
-        //{
-        //    // CreateActorCommand nesnesi oluşturulur
-        //    UpdateActorCommand command = new UpdateActorCommand(_context);
-        //    command.Id = id;
-        //    command.Model = updateActor;
-        //    // validation yapılır.
-        //    UpdateActorCommandValidator validator  = new UpdateActorCommandValidator();
-        //    validator.ValidateAndThrow(command);
-        //    command.Handle();
-           
-        //    return Ok();
-        //}
+        // PUT: update a Actor
+        [HttpPut("{id}")]
+        public IActionResult UpdateActor(int id, [FromBody] UpdateActorModel updateActor)
+        {
+            // CreateActorCommand nesnesi oluşturulur
+            UpdateActorCommand command = new UpdateActorCommand(_context);
+            command.Id = id;
+            command.Model = updateActor;
+            // validation yapılır.
+            UpdateActorCommandValidator validator = new UpdateActorCommandValidator();
+            validator.ValidateAndThrow(command);
+            command.Handle();
+
+            return Ok();
+        }
 
         //// DELETE: delete a Actor
         //[HttpDelete("{id}")]
@@ -89,7 +92,7 @@ namespace Ab_pk_task_MovieStore.Controllers
         //    DeleteActorCommandValidator _validator = new DeleteActorCommandValidator();
         //    _validator.ValidateAndThrow(command);
         //    command.Handle();
-           
+
         //    return Ok();
         //}
 

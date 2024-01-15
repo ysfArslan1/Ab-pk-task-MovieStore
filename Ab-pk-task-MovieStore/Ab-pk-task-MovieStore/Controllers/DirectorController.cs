@@ -2,6 +2,9 @@
 using AutoMapper;
 using Ab_pk_task_MovieStore.Aplication.DirectorsOperations.Queries.GetDirectors;
 using Ab_pk_task_MovieStore.DBOperations;
+using Ab_pk_task_MovieStore.Aplication.DirectorsOperations.Queries.GetDirectorDetail;
+using FluentValidation;
+using Ab_pk_task_MovieStore.Aplication.DirectorsOperations.Commands.UpdateDirector;
 
 namespace Ab_pk_task_MovieStore.Controllers
 {
@@ -28,22 +31,22 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok(_list);
         }
 
-        //// GET: get Director from id
-        //[HttpGet("{id}")]
-        //public ActionResult<DirectorDetailViewModel> GetDirectorById([FromRoute] int id)
-        //{
-        //    DirectorDetailViewModel result;
-           
-        //    // GetDirectorDetailQuery nesnesi oluşturulur
-        //    GetDirectorDetailQuery query = new GetDirectorDetailQuery(_context, _mapper);
-        //    query.Id = id;
-        //    // Validation işlemi yapılır.
-        //    GetDirectorDetailQueryValidator validator = new GetDirectorDetailQueryValidator();
-        //    validator.ValidateAndThrow(query);
-        //    result = query.Handle();
-            
-        //    return Ok(result);
-        //}
+        // GET: get Director from id
+        [HttpGet("{id}")]
+        public ActionResult<DirectorDetailViewModel> GetDirectorById([FromRoute] int id)
+        {
+            DirectorDetailViewModel result;
+
+            // GetDirectorDetailQuery nesnesi oluşturulur
+            GetDirectorDetailQuery query = new GetDirectorDetailQuery(_context, _mapper);
+            query.Id = id;
+            // Validation işlemi yapılır.
+            GetDirectorDetailQueryValidator validator = new GetDirectorDetailQueryValidator();
+            validator.ValidateAndThrow(query);
+            result = query.Handle();
+
+            return Ok(result);
+        }
 
         //// Post: create a Director
         //[HttpPost]
@@ -60,21 +63,21 @@ namespace Ab_pk_task_MovieStore.Controllers
         //    return Ok();
         //}
 
-        //// PUT: update a Director
-        //[HttpPut("{id}")]
-        //public IActionResult UpdateDirector(int id, [FromBody] UpdateDirectorModel updateDirector)
-        //{
-        //    // CreateDirectorCommand nesnesi oluşturulur
-        //    UpdateDirectorCommand command = new UpdateDirectorCommand(_context);
-        //    command.Id = id;
-        //    command.Model = updateDirector;
-        //    // validation yapılır.
-        //    UpdateDirectorCommandValidator validator  = new UpdateDirectorCommandValidator();
-        //    validator.ValidateAndThrow(command);
-        //    command.Handle();
-           
-        //    return Ok();
-        //}
+        // PUT: update a Director
+        [HttpPut("{id}")]
+        public IActionResult UpdateDirector(int id, [FromBody] UpdateDirectorModel updateDirector)
+        {
+            // CreateDirectorCommand nesnesi oluşturulur
+            UpdateDirectorCommand command = new UpdateDirectorCommand(_context);
+            command.Id = id;
+            command.Model = updateDirector;
+            // validation yapılır.
+            UpdateDirectorCommandValidator validator = new UpdateDirectorCommandValidator();
+            validator.ValidateAndThrow(command);
+            command.Handle();
+
+            return Ok();
+        }
 
         //// DELETE: delete a Director
         //[HttpDelete("{id}")]
@@ -87,7 +90,7 @@ namespace Ab_pk_task_MovieStore.Controllers
         //    DeleteDirectorCommandValidator _validator = new DeleteDirectorCommandValidator();
         //    _validator.ValidateAndThrow(command);
         //    command.Handle();
-           
+
         //    return Ok();
         //}
 
