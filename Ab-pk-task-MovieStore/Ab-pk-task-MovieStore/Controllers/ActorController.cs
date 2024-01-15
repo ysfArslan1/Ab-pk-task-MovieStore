@@ -7,6 +7,8 @@ using Ab_pk_task_MovieStore.DBOperations;
 using Ab_pk_task_MovieStore.Aplication.ActorsOperations.Queries.GetActorDetail;
 using FluentValidation;
 using Ab_pk_task_MovieStore.Aplication.ActorsOperations.Commands.UpdateActor;
+using Ab_pk_task_MovieStore.Aplication.ActorsOperations.Commands.DeleteActor;
+using Ab_pk_task_MovieStore.Aplication.ActorsOperations.Commands.CreateActor;
 
 namespace Ab_pk_task_MovieStore.Controllers
 {
@@ -50,20 +52,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok(result);
         }
 
-        //// Post: create a Actor
-        //[HttpPost]
-        //public IActionResult AddActor([FromBody] CreateActorModel newModel)
-        //{
-        //    // CreateActorCommand nesnesi oluşturulur
-        //    CreateActorCommand command = new CreateActorCommand(_context, _mapper);
-        //    command.Model = newModel;
-        //    // validation yapılır.
-        //    CreateActorCommandValidator _validator=new CreateActorCommandValidator();
-        //    _validator.ValidateAndThrow(newModel);
-        //    command.Handle();
+        // Post: create a Actor
+        [HttpPost]
+        public IActionResult AddActor([FromBody] CreateActorModel newModel)
+        {
+            // CreateActorCommand nesnesi oluşturulur
+            CreateActorCommand command = new CreateActorCommand(_context, _mapper);
+            command.Model = newModel;
+            // validation yapılır.
+            CreateActorCommandValidator _validator = new CreateActorCommandValidator();
+            _validator.ValidateAndThrow(newModel);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         // PUT: update a Actor
         [HttpPut("{id}")]
@@ -81,20 +83,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok();
         }
 
-        //// DELETE: delete a Actor
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteActor(int id)
-        //{
-        //    // CreateActorCommand nesnesi oluşturulur
-        //    DeleteActorCommand command = new DeleteActorCommand(_context);
-        //    command.Id = id;
-        //    // validation yapılır.
-        //    DeleteActorCommandValidator _validator = new DeleteActorCommandValidator();
-        //    _validator.ValidateAndThrow(command);
-        //    command.Handle();
+        // DELETE: delete a Actor
+        [HttpDelete("{id}")]
+        public IActionResult DeleteActor(int id)
+        {
+            // CreateActorCommand nesnesi oluşturulur
+            DeleteActorCommand command = new DeleteActorCommand(_context);
+            command.Id = id;
+            // validation yapılır.
+            DeleteActorCommandValidator _validator = new DeleteActorCommandValidator();
+            _validator.ValidateAndThrow(command);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
     }
 }

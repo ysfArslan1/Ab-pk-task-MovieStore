@@ -5,6 +5,8 @@ using Ab_pk_task_MovieStore.DBOperations;
 using Ab_pk_task_MovieStore.Aplication.CustomersOperations.Queries.GetCustomerDetail;
 using FluentValidation;
 using Ab_pk_task_MovieStore.Aplication.CustomersOperations.Commands.UpdateCustomer;
+using Ab_pk_task_MovieStore.Aplication.CustomersOperations.Commands.DeleteCustomer;
+using Ab_pk_task_MovieStore.Aplication.CustomersOperations.Commands.CreateCustomer;
 
 namespace Ab_pk_task_MovieStore.Controllers
 {
@@ -48,20 +50,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok(result);
         }
 
-        //// Post: create a Customer
-        //[HttpPost]
-        //public IActionResult AddCustomer([FromBody] CreateCustomerModel newModel)
-        //{
-        //    // CreateCustomerCommand nesnesi oluşturulur
-        //    CreateCustomerCommand command = new CreateCustomerCommand(_context, _mapper);
-        //    command.Model = newModel;
-        //    // validation yapılır.
-        //    CreateCustomerCommandValidator _validator=new CreateCustomerCommandValidator();
-        //    _validator.ValidateAndThrow(newModel);
-        //    command.Handle();
+        // Post: create a Customer
+        [HttpPost]
+        public IActionResult AddCustomer([FromBody] CreateCustomerModel newModel)
+        {
+            // CreateCustomerCommand nesnesi oluşturulur
+            CreateCustomerCommand command = new CreateCustomerCommand(_context, _mapper);
+            command.Model = newModel;
+            // validation yapılır.
+            CreateCustomerCommandValidator _validator = new CreateCustomerCommandValidator();
+            _validator.ValidateAndThrow(newModel);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         // PUT: update a Customer
         [HttpPut("{id}")]
@@ -79,20 +81,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok();
         }
 
-        //// DELETE: delete a Customer
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteCustomer(int id)
-        //{
-        //    // CreateCustomerCommand nesnesi oluşturulur
-        //    DeleteCustomerCommand command = new DeleteCustomerCommand(_context);
-        //    command.Id = id;
-        //    // validation yapılır.
-        //    DeleteCustomerCommandValidator _validator = new DeleteCustomerCommandValidator();
-        //    _validator.ValidateAndThrow(command);
-        //    command.Handle();
+        // DELETE: delete a Customer
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCustomer(int id)
+        {
+            // CreateCustomerCommand nesnesi oluşturulur
+            DeleteCustomerCommand command = new DeleteCustomerCommand(_context);
+            command.Id = id;
+            // validation yapılır.
+            DeleteCustomerCommandValidator _validator = new DeleteCustomerCommandValidator();
+            _validator.ValidateAndThrow(command);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
     }
 }

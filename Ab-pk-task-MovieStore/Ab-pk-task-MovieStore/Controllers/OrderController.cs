@@ -7,9 +7,13 @@ using Ab_pk_task_MovieStore.DBOperations;
 using Ab_pk_task_MovieStore.Aplication.OrdersOperations.Queries.GetOrderDetail;
 using FluentValidation;
 using Ab_pk_task_MovieStore.Aplication.OrdersOperations.Commands.UpdateOrder;
+using Ab_pk_task_MovieStore.Aplication.OrdersOperations.Commands.DeleteOrder;
+using Ab_pk_task_MovieStore.Aplication.OrdersOperations.Commands.CreateOrder;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ab_pk_task_MovieStore.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class OrderController : ControllerBase
@@ -50,20 +54,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok(result);
         }
 
-        //// Post: create a Order
-        //[HttpPost]
-        //public IActionResult AddOrder([FromBody] CreateOrderModel newModel)
-        //{
-        //    // CreateOrderCommand nesnesi oluşturulur
-        //    CreateOrderCommand command = new CreateOrderCommand(_context, _mapper);
-        //    command.Model = newModel;
-        //    // validation yapılır.
-        //    CreateOrderCommandValidator _validator=new CreateOrderCommandValidator();
-        //    _validator.ValidateAndThrow(newModel);
-        //    command.Handle();
+        // Post: create a Order
+        [HttpPost]
+        public IActionResult AddOrder([FromBody] CreateOrderModel newModel)
+        {
+            // CreateOrderCommand nesnesi oluşturulur
+            CreateOrderCommand command = new CreateOrderCommand(_context, _mapper);
+            command.Model = newModel;
+            // validation yapılır.
+            CreateOrderCommandValidator _validator = new CreateOrderCommandValidator();
+            _validator.ValidateAndThrow(newModel);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         // PUT: update a Order
         [HttpPut("{id}")]
@@ -81,20 +85,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok();
         }
 
-        //// DELETE: delete a Order
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteOrder(int id)
-        //{
-        //    // CreateOrderCommand nesnesi oluşturulur
-        //    DeleteOrderCommand command = new DeleteOrderCommand(_context);
-        //    command.Id = id;
-        //    // validation yapılır.
-        //    DeleteOrderCommandValidator _validator = new DeleteOrderCommandValidator();
-        //    _validator.ValidateAndThrow(command);
-        //    command.Handle();
+        // DELETE: delete a Order
+        [HttpDelete("{id}")]
+        public IActionResult DeleteOrder(int id)
+        {
+            // CreateOrderCommand nesnesi oluşturulur
+            DeleteOrderCommand command = new DeleteOrderCommand(_context);
+            command.Id = id;
+            // validation yapılır.
+            DeleteOrderCommandValidator _validator = new DeleteOrderCommandValidator();
+            _validator.ValidateAndThrow(command);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
     }
 }

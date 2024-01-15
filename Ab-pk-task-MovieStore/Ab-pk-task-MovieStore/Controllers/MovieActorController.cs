@@ -8,6 +8,10 @@ using FluentValidation;
 using Ab_pk_task_MovieStore.Aplication.MoviesOperations.Commands.UpdateMovie;
 using Ab_pk_task_MovieStore.Aplication.MovieActorsOperations.Queries.GetMovieActorDetail;
 using Ab_pk_task_MovieStore.Aplication.MovieActorsOperations.Commands.UpdateMovieActor;
+using Ab_pk_task_MovieStore.Aplication.MoviesOperations.Commands.DeleteMovie;
+using Ab_pk_task_MovieStore.Aplication.MoviesOperations.Commands.CreateMovie;
+using Ab_pk_task_MovieStore.Aplication.MovieActorsOperations.Commands.CreateMovieActor;
+using Ab_pk_task_MovieStore.Aplication.MovieActorsOperations.Commands.DeleteMovieActor;
 
 namespace Ab_pk_task_MovieStore.Controllers
 {
@@ -51,20 +55,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok(result);
         }
 
-        //// Post: create a Movie
-        //[HttpPost]
-        //public IActionResult AddMovie([FromBody] CreateMovieModel newModel)
-        //{
-        //    // CreateMovieCommand nesnesi oluşturulur
-        //    CreateMovieCommand command = new CreateMovieCommand(_context, _mapper);
-        //    command.Model = newModel;
-        //    // validation yapılır.
-        //    CreateMovieCommandValidator _validator=new CreateMovieCommandValidator();
-        //    _validator.ValidateAndThrow(newModel);
-        //    command.Handle();
+        // Post: create a Movie
+        [HttpPost]
+        public IActionResult AddMovie([FromBody] CreateMovieActorModel newModel)
+        {
+            // CreateMovieCommand nesnesi oluşturulur
+            CreateMovieActorCommand command = new CreateMovieActorCommand(_context, _mapper);
+            command.Model = newModel;
+            // validation yapılır.
+            CreateMovieActorCommandValidator _validator = new CreateMovieActorCommandValidator();
+            _validator.ValidateAndThrow(newModel);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         // PUT: update a Movie
         [HttpPut("{id}")]
@@ -82,20 +86,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok();
         }
 
-        //// DELETE: delete a Movie
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteMovie(int id)
-        //{
-        //    // CreateMovieCommand nesnesi oluşturulur
-        //    DeleteMovieCommand command = new DeleteMovieCommand(_context);
-        //    command.Id = id;
-        //    // validation yapılır.
-        //    DeleteMovieCommandValidator _validator = new DeleteMovieCommandValidator();
-        //    _validator.ValidateAndThrow(command);
-        //    command.Handle();
+        // DELETE: delete a Movie
+        [HttpDelete("{id}")]
+        public IActionResult DeleteMovie(int id)
+        {
+            // CreateMovieCommand nesnesi oluşturulur
+            DeleteMovieActorCommand command = new DeleteMovieActorCommand(_context);
+            command.Id = id;
+            // validation yapılır.
+            DeleteMovieActorCommandValidator _validator = new DeleteMovieActorCommandValidator();
+            _validator.ValidateAndThrow(command);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
     }
 }

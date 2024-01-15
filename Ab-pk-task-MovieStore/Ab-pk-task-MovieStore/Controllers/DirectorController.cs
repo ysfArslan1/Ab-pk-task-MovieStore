@@ -5,6 +5,8 @@ using Ab_pk_task_MovieStore.DBOperations;
 using Ab_pk_task_MovieStore.Aplication.DirectorsOperations.Queries.GetDirectorDetail;
 using FluentValidation;
 using Ab_pk_task_MovieStore.Aplication.DirectorsOperations.Commands.UpdateDirector;
+using Ab_pk_task_MovieStore.Aplication.DirectorsOperations.Commands.DeleteDirector;
+using Ab_pk_task_MovieStore.Aplication.DirectorsOperations.Commands.CreateDirector;
 
 namespace Ab_pk_task_MovieStore.Controllers
 {
@@ -48,20 +50,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok(result);
         }
 
-        //// Post: create a Director
-        //[HttpPost]
-        //public IActionResult AddDirector([FromBody] CreateDirectorModel newModel)
-        //{
-        //    // CreateDirectorCommand nesnesi oluşturulur
-        //    CreateDirectorCommand command = new CreateDirectorCommand(_context, _mapper);
-        //    command.Model = newModel;
-        //    // validation yapılır.
-        //    CreateDirectorCommandValidator _validator=new CreateDirectorCommandValidator();
-        //    _validator.ValidateAndThrow(newModel);
-        //    command.Handle();
+        // Post: create a Director
+        [HttpPost]
+        public IActionResult AddDirector([FromBody] CreateDirectorModel newModel)
+        {
+            // CreateDirectorCommand nesnesi oluşturulur
+            CreateDirectorCommand command = new CreateDirectorCommand(_context, _mapper);
+            command.Model = newModel;
+            // validation yapılır.
+            CreateDirectorCommandValidator _validator = new CreateDirectorCommandValidator();
+            _validator.ValidateAndThrow(newModel);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
         // PUT: update a Director
         [HttpPut("{id}")]
@@ -79,20 +81,20 @@ namespace Ab_pk_task_MovieStore.Controllers
             return Ok();
         }
 
-        //// DELETE: delete a Director
-        //[HttpDelete("{id}")]
-        //public IActionResult DeleteDirector(int id)
-        //{
-        //    // CreateDirectorCommand nesnesi oluşturulur
-        //    DeleteDirectorCommand command = new DeleteDirectorCommand(_context);
-        //    command.Id = id;
-        //    // validation yapılır.
-        //    DeleteDirectorCommandValidator _validator = new DeleteDirectorCommandValidator();
-        //    _validator.ValidateAndThrow(command);
-        //    command.Handle();
+        // DELETE: delete a Director
+        [HttpDelete("{id}")]
+        public IActionResult DeleteDirector(int id)
+        {
+            // CreateDirectorCommand nesnesi oluşturulur
+            DeleteDirectorCommand command = new DeleteDirectorCommand(_context);
+            command.Id = id;
+            // validation yapılır.
+            DeleteDirectorCommandValidator _validator = new DeleteDirectorCommandValidator();
+            _validator.ValidateAndThrow(command);
+            command.Handle();
 
-        //    return Ok();
-        //}
+            return Ok();
+        }
 
     }
 }

@@ -12,5 +12,6 @@ namespace Ab_pk_task_MovieStore.Entities
         public virtual Movie Movie { get; set; }
         public int Prize { get; set; }
         public DateTime PurchaseDate { get; set; }
+        public bool isActive { get; set; } = true;
     }
 }
