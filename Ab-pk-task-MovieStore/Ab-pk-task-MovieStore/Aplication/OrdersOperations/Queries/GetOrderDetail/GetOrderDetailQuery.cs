@@ -16,7 +16,7 @@ namespace Ab_pk_task_MovieStore.Aplication.OrdersOperations.Queries.GetOrderDeta
         }
         public OrderDetailViewModel Handle()
         {
-            var item = _dbContext.Orders.Where(x => x.Id == Id).Include(x => x.Movie).Include(x => x.Custemer).FirstOrDefault();
+            var item = _dbContext.Orders.Where(x => x.Id == Id && x.isActive == true).Include(x => x.Movie).Include(x => x.Custemer).FirstOrDefault();
             if (item is null)
                 throw new InvalidOperationException("Bulunamadı");
 
@@ -28,7 +28,6 @@ namespace Ab_pk_task_MovieStore.Aplication.OrdersOperations.Queries.GetOrderDeta
 
     public class OrderDetailViewModel
     {
-        public int Id { get; set; }
         public string Custemer { get; set; }
         public string Movie { get; set; }
         public string Prize { get; set; }

@@ -28,7 +28,6 @@ namespace Ab_pk_task_MovieStore.Aplication.MoviesOperations.Queries.GetMovieDeta
 
     public class MovieDetailViewModel
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public DateTime ReleaseDate { get; set; }
         public string Genre { get; set; }

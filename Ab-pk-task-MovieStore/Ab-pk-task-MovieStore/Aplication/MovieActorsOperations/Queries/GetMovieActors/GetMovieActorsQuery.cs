@@ -25,7 +25,6 @@ public class GetMovieActorsQuery
 
 public class MovieActorViewModel
 {
-    public int Id { get; set; }
     public string MovieTitle { get; set; }
     public string Actor { get; set; }
 }

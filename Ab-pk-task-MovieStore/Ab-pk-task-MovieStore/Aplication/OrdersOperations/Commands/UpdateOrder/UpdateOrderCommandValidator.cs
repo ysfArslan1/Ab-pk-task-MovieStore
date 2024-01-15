@@ -9,7 +9,7 @@ namespace Ab_pk_task_MovieStore.Aplication.OrdersOperations.Commands.UpdateOrder
         public UpdateOrderCommandValidator()
         {
             RuleFor(x => x.Id).NotEmpty();
-            RuleFor(x => x.Model.MovieId).NotEmpty();
+            RuleFor(x => x.Model.MovieId).NotEmpty().GreaterThan(0);
         }
     }
 

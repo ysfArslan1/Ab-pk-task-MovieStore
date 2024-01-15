@@ -28,7 +28,6 @@ namespace Ab_pk_task_MovieStore.Aplication.MovieActorsOperations.Queries.GetMovi
 
     public class MovieActorDetailViewModel
     {
-        public int Id { get; set; }
         public string MovieTitle { get; set; }
         public string Actor { get; set; }
     }

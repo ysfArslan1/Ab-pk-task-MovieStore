@@ -15,7 +15,7 @@ public class GetOrdersQuery
     public List<OrderViewModel> Handle()
     {
 
-        var _list = _dbContext.Orders.OrderBy(x => x.Id).Include(x=>x.Movie).Include(x=>x.Custemer).ToList();
+        var _list = _dbContext.Orders.Where(x => x.isActive == true).OrderBy(x => x.Id).Include(x=>x.Movie).Include(x=>x.Custemer).ToList();
 
         List<OrderViewModel> result = _mapper.Map<List<OrderViewModel>>(_list);
         return result;
@@ -24,7 +24,6 @@ public class GetOrdersQuery
 
 public class OrderViewModel
 {
-    public int Id { get; set; }
     public string Custemer { get; set; }
     public string Movie { get; set; }
     public string Prize { get; set; }
