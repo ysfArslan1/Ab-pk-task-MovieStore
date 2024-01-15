@@ -27,7 +27,6 @@ namespace Ab_pk_task_MovieStore.Aplication.ActorsOperations.Queries.GetActorDeta
 
     public class ActorDetailViewModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
     }
