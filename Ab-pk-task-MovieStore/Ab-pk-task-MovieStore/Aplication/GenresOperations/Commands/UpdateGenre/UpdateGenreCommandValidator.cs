@@ -8,6 +8,7 @@ namespace Ab_pk_task_MovieStore.Aplication.GenresOperations.Commands.UpdateGenre
 
         public UpdateGenreCommandValidator()
         {
+            RuleFor(x => x.Id).NotEmpty().GreaterThan(0);
             RuleFor(x => x.Model.Name).NotEmpty().MaximumLength(50);
         }
     }
