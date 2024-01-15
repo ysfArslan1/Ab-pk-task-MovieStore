@@ -30,7 +30,7 @@ public class MovieViewModel
     public DateTime ReleaseDate { get; set; }
     public string Genre { get; set; }
     public string Director { get; set; }
-    public List<int> Actors { get; set; }
+    public List<int> ActorIds { get; set; }
 }
 
 
