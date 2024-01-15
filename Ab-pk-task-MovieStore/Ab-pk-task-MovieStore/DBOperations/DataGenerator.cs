@@ -129,22 +129,22 @@ public class DataGenerator
                 );
                 content.SaveChanges();
             }
-            if (!content.Custemers.Any())
+            if (!content.Customers.Any())
             {
-                content.Custemers.AddRange(
-                    new Custemer
+                content.Customers.AddRange(
+                    new Customer
                     {
                         Name = "Customer1",
                         Surname = "custemersurname1",
                         Email = "a1@gmail.com",
                         Password = "12345",
-                    }, new Custemer
+                    }, new Customer
                     {
                         Name = "Customer2",
                         Surname = "custemersurname2",
                         Email = "a2@gmail.com",
                         Password = "22345",
-                    }, new Custemer
+                    }, new Customer
                     {
                         Name = "Customer3",
                         Surname = "custemersurname3",
@@ -154,9 +154,33 @@ public class DataGenerator
                 );
                 content.SaveChanges();
             }
-
-
-
+            if (!content.Orders.Any())
+            {
+                content.Orders.AddRange(
+                    new Order
+                    {
+                        MovieId = 1,
+                        CustemerId = 1,
+                        PurchaseDate = DateTime.Now.AddDays(-43),
+                        Prize=123
+                    },
+                    new Order
+                    {
+                        MovieId = 1,
+                        CustemerId = 2,
+                        PurchaseDate = DateTime.Now.AddDays(-43),
+                        Prize = 123
+                    },
+                    new Order
+                    {
+                        MovieId = 2,
+                        CustemerId = 3,
+                        PurchaseDate = DateTime.Now.AddDays(-43),
+                        Prize = 234
+                    }
+                );
+                content.SaveChanges();
+            }
 
         }
     }

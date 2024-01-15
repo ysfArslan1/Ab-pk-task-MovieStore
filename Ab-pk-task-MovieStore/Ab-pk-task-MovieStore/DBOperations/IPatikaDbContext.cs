@@ -8,7 +8,7 @@ public interface IPatikaDbContext
     
     DbSet<Movie> Movies { get; set; }
     DbSet<Actor> Actors { get; set; }
-    DbSet<Custemer> Custemers { get; set; }
+    DbSet<Customer> Customers { get; set; }
     DbSet<Director> Directors { get; set; }
     DbSet<MovieActor> MovieActors { get; set; }
     DbSet<Order> Orders { get; set; }

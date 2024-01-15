@@ -7,7 +7,7 @@ namespace Ab_pk_task_MovieStore.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int CustemerId { get; set; }
-        public virtual Custemer Custemer { get; set; }
+        public virtual Customer Custemer { get; set; }
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
         public int Prize { get; set; }

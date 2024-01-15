@@ -2,7 +2,7 @@
 
 namespace Ab_pk_task_MovieStore.Entities
 {
-    public class Custemer
+    public class Customer
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
