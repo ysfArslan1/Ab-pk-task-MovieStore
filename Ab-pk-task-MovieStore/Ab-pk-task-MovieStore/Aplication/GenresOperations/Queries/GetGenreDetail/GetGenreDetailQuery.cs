@@ -28,7 +28,6 @@ namespace Ab_pk_task_MovieStore.Aplication.GenresOperations.Queries.GetGenreDeta
 
     public class GenreDetailViewModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 

@@ -27,7 +27,6 @@ namespace Ab_pk_task_MovieStore.Aplication.DirectorsOperations.Queries.GetDirect
 
     public class DirectorDetailViewModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
     }
