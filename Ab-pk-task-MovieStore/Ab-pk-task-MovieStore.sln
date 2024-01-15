@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ab-pk-task-MovieStore", "Ab-pk-task-MovieStore\Ab-pk-task-MovieStore.csproj", "{5237CFEB-C0A1-4277-AF6A-EC9A3FA7D17A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ab-pk-task-MovieStore", "Ab-pk-task-MovieStore\Ab-pk-task-MovieStore.csproj", "{5237CFEB-C0A1-4277-AF6A-EC9A3FA7D17A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ab-pk-task-MovieStore.UnitTests", "..\Tests\Ab-pk-task-MovieStore.UnitTests\Ab-pk-task-MovieStore.UnitTests.csproj", "{ADF45B5B-90F2-4E15-8139-F881E360707C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5237CFEB-C0A1-4277-AF6A-EC9A3FA7D17A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5237CFEB-C0A1-4277-AF6A-EC9A3FA7D17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5237CFEB-C0A1-4277-AF6A-EC9A3FA7D17A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADF45B5B-90F2-4E15-8139-F881E360707C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADF45B5B-90F2-4E15-8139-F881E360707C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADF45B5B-90F2-4E15-8139-F881E360707C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADF45B5B-90F2-4E15-8139-F881E360707C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

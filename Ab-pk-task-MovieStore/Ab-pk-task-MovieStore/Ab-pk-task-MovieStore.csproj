@@ -25,19 +25,4 @@
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Aplication\OrdersOperations\Commands\CreateOrder\" />
-    <Folder Include="Aplication\OrdersOperations\Commands\DeleteOrder\" />
-    <Folder Include="Aplication\CustomersOperations\Commands\CreateCustomer\" />
-    <Folder Include="Aplication\CustomersOperations\Commands\DeleteCustomer\" />
-    <Folder Include="Aplication\MovieActorsOperations\Commands\CreateMovieActor\" />
-    <Folder Include="Aplication\MovieActorsOperations\Commands\DeleteMovieActor\" />
-    <Folder Include="Aplication\MoviesOperations\Commands\CreateMovie\" />
-    <Folder Include="Aplication\MoviesOperations\Commands\DeleteMovie\" />
-    <Folder Include="Aplication\DirectorsOperations\Commands\CreateDirector\" />
-    <Folder Include="Aplication\DirectorsOperations\Commands\DeleteDirector\" />
-    <Folder Include="Aplication\ActorsOperations\Commands\CreateActor\" />
-    <Folder Include="Aplication\ActorsOperations\Commands\DeleteActor\" />
-  </ItemGroup>
-
 </Project>
